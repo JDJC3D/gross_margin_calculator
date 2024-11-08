@@ -14,6 +14,7 @@ def calculate_gm():
 
     output_label.configure(app, text=f"£{selling_price}")
 
+
 # Gross Margin Calculator
 
 heading = CTkLabel(app, text="Gross Margin Calculator")
@@ -33,6 +34,7 @@ calculate_btn.pack(padx=20, pady=10)
 
 formula_label = CTkLabel(app, text="Formula: COST_PRICE / ( 1 - MARGIN / 100 )")
 formula_label.pack(padx=20, pady=10)
+
 
 app.mainloop()
 
