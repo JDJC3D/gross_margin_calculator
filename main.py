@@ -2,6 +2,7 @@
     Program to auto calculate gross margin
     Formula: COST_PRICE / ( 1 - MARGIN / 100 )
 """
+from tkinter import PhotoImage
 
 from customtkinter import *
 
@@ -13,6 +14,7 @@ app.title("Gross Margin Calculator")
 def enter_pressed(event):
     # Janky but does work, re-vist this at a later date
     calculate_gm()
+
 
 def calculate_gm():
 
@@ -38,9 +40,9 @@ def calculate_gm():
             # Used format as it's easier than importing another package to do it with floats
             # This just formats the string, good enough for who it's for.
 
-            formatted_selling_price = f"£{format(selling_price, '.2f')}"
+            formatted_selling_price = f"£ {format(selling_price, '.2f')}"
 
-            output_label.configure(app, text=formatted_selling_price, text_color="black")
+            output_label.configure(app, text=formatted_selling_price, text_color="green")
 
             price_entry.delete(0, END)
             markup_entry.delete(0, END)
@@ -68,7 +70,7 @@ markup_entry = CTkEntry(app)
 markup_entry.insert(END, 60)
 markup_entry.pack(padx=20, pady=10, fill="x")
 
-output_label = CTkLabel(app, text="£")
+output_label = CTkLabel(app, text="")
 output_label.configure(font=("Arial", 22, "bold"))
 output_label.pack(padx=20, pady=10)
 
@@ -84,8 +86,5 @@ app.bind("<Return>", enter_pressed)
 
 app.mainloop()
 
-# TODO: Create a custom Icon (Get Canva for this)
 # TODO: Create exe for desktop use (see notes on customtkinter site)
-# TODO: Add hyperlink to the footer https://www.tutorialspoint.com/how-to-create-hyperlink-in-a-tkinter-text-widget
 # TODO: Create a Readme and add screen shots, on for the portfolio later https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/
-# TODO: Add exe to github https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
