@@ -2,14 +2,14 @@
     Program to auto calculate gross margin
     Formula: COST_PRICE / ( 1 - MARGIN / 100 )
 """
-from tkinter import PhotoImage
 
 from customtkinter import *
 
 app = CTk()
-app.minsize(320,350)
-app.maxsize(320,350)
+app.minsize(320, 350)
+app.maxsize(320, 350)
 app.title("Gross Margin Calculator")
+
 
 def enter_pressed(event):
     # Janky but does work, re-vist this at a later date
@@ -23,7 +23,9 @@ def calculate_gm():
         margin = float(markup_entry.get())
 
     except ValueError:
-        output_label.configure(app, text=f"Numbers Only", text_color="red", font=("Arial", 12, "bold"))
+        output_label.configure(
+            app, text=f"Numbers Only", text_color="red", font=("Arial", 12, "bold")
+        )
         price_entry.delete(0, END)
         markup_entry.delete(0, END)
         price_entry.focus_set()
@@ -32,22 +34,29 @@ def calculate_gm():
 
         # Another fix that needs address in the future to be able to calculate over 100% gross margin
         if float(markup_entry.get()) > 99:
-            output_label.configure(app, text=f"Please enter a markup value between 1-99", text_color="red",
-                                   font=("Arial", 12, "bold"))
+            output_label.configure(
+                app,
+                text=f"Please enter a markup value between 1-99",
+                text_color="red",
+                font=("Arial", 12, "bold"),
+            )
         else:
-            selling_price = cost_price / (1 - ( margin / 100) )
+            selling_price = cost_price / (1 - (margin / 100))
 
             # Used format as it's easier than importing another package to do it with floats
             # This just formats the string, good enough for who it's for.
 
             formatted_selling_price = f"£ {format(selling_price, '.2f')}"
 
-            output_label.configure(app, text=formatted_selling_price, text_color="green")
+            output_label.configure(
+                app, text=formatted_selling_price, text_color="green"
+            )
 
             price_entry.delete(0, END)
             markup_entry.delete(0, END)
             markup_entry.insert(END, 60)
             price_entry.focus_set()
+
 
 # |-------------------------------- Gross Margin Calculator UI --------------------------------|
 
@@ -59,13 +68,18 @@ heading.pack(padx=20, pady=20, fill="x")
 
 price_label = CTkLabel(app, text="Enter the cost price: ")
 price_label.configure(font=("Arial", 12, "bold"))
-price_label.pack(padx=20, pady=0, fill="y",anchor="w",)
-price_entry = CTkEntry(app,  placeholder_text="00.00")
+price_label.pack(
+    padx=20,
+    pady=0,
+    fill="y",
+    anchor="w",
+)
+price_entry = CTkEntry(app, placeholder_text="00.00")
 price_entry.pack(padx=20, pady=10, fill="x")
 
 markup_label = CTkLabel(app, text="Enter the mark up amount: ")
 markup_label.configure(font=("Arial", 12, "bold"))
-markup_label.pack(padx=20, pady=0, fill="y",anchor="w")
+markup_label.pack(padx=20, pady=0, fill="y", anchor="w")
 markup_entry = CTkEntry(app)
 markup_entry.insert(END, 60)
 markup_entry.pack(padx=20, pady=10, fill="x")
@@ -86,5 +100,4 @@ app.bind("<Return>", enter_pressed)
 
 app.mainloop()
 
-# TODO: Create exe for desktop use (see notes on customtkinter site)
-# TODO: Create a Readme and add screen shots, on for the portfolio later https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/
+# Program Icon from https://www.flaticon.com/free-icons/calculator
