@@ -1,48 +1,67 @@
 from customtkinter import *
 
+"""
+    Program to auto calculate gross margin 
+    
+    Formula: COST_PRICE / ( 1 - MARGIN / 100 )
+"""
+
 app = CTk()
-app.geometry("320x320")
+app.geometry("320x340")
 app.title("Gross Margin Calculator")
 
-# Formula COST_PRICE / ( 1 - MARGIN / 100 )
+
+
 
 def calculate_gm():
+    try:
+        cost_price = float(price_entry.get())
+        margin = float(markup_entry.get())
+    except ValueError:
+        output_label.configure(app, text=f"Please only use numbers", text_color="red")
+    else:
+        selling_price = cost_price / (1 - ( margin / 100) )
 
-    cost_price = float(price_entry.get())
-    margin = float(markup_entry.get())
-    selling_price = round(cost_price / (1 - ( margin / 100) ), 2)
+        # Used format as its easier than importing another package to do it with floats
+        # This just formats the string, good enough for who its for.
 
-    output_label.configure(app, text=f"£{selling_price}")
+        formatted_selling_price = f"£{format(selling_price, '.2f')}"
 
+        output_label.configure(app, text=formatted_selling_price, text_color="black")
+
+        price_entry.delete(0, END)
+        markup_entry.delete(0, END)
 
 # Gross Margin Calculator
 
 heading = CTkLabel(app, text="Gross Margin Calculator")
+heading.configure(font=("Arial", 20, "bold"))
 heading.pack(padx=20, pady=20)
 
-price_entry = CTkEntry(app, placeholder_text="Price in Pounds")
+price_entry = CTkEntry(app, placeholder_text="Price in £")
 price_entry.pack(padx=20, pady=10)
 
-markup_entry = CTkEntry(app, placeholder_text="60")
+markup_entry = CTkEntry(app, placeholder_text="Percentage Mark Up")
 markup_entry.pack(padx=20, pady=10)
 
 output_label = CTkLabel(app, text="£")
+output_label.configure(font=("Arial", 16, "bold"))
 output_label.pack(padx=20, pady=10)
 
 calculate_btn = CTkButton(app, text="Calculate", command=calculate_gm)
 calculate_btn.pack(padx=20, pady=10)
 
-formula_label = CTkLabel(app, text="Formula: COST_PRICE / ( 1 - MARGIN / 100 )")
-formula_label.pack(padx=20, pady=10)
+footer_label = CTkLabel(app, text=f"Created by James Chance https://github.com/JDJC3D")
+footer_label.configure(font=("Arial", 10, "italic"))
+footer_label.pack(padx=20, pady=20)
 
 
 app.mainloop()
 
-# TODO 1: Redo UI with labels (Add footer with my details as well (name, copright, github))
-# TODO 2: Move from Pack to Grid
-# TODO 3: Add Error catching
-# TODO 4: Fix bug with number missing 0 when using 10.00 and 60% markup
-# TODO 5: Add a custom font
-# TODO 6: Create a custom Icon (Get Canva for this)
-# TODO 7: Create exe for desktop use (see notes on customtkinter site)
-# TODO 8: Add Exit button
+# TODO: Redo UI with labels
+# TODO: Move from Pack to Grid
+# TODO: Add a custom font
+# TODO: Create a custom Icon (Get Canva for this)
+# TODO: Create exe for desktop use (see notes on customtkinter site)
+# TODO: Add Exit button
+# TODO: Add hyperlink to the footer https://www.tutorialspoint.com/how-to-create-hyperlink-in-a-tkinter-text-widget
