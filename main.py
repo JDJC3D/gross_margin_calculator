@@ -7,9 +7,11 @@ app.title("Gross Margin Calculator")
 # Formula COST_PRICE / ( 1 - MARGIN / 100 )
 
 def calculate_gm():
-    cost = float(price_entry.get())
-    markup = float(markup_entry.get())
-    selling_price = round(cost / (1 - ( markup / 100) ), 3)
+
+    cost_price = float(price_entry.get())
+    margin = float(markup_entry.get())
+
+    selling_price = round(cost_price / (1 - ( margin / 100) ), 2)
 
     output_label.configure(app, text=f"£{selling_price}")
 
