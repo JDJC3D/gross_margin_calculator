@@ -1,5 +1,7 @@
 # Mark Up Calculator
 
+![Screenshot of Project](image.jpg)
+
 ## Project Description & Instructions
 
 This is a simple app for to calculate the gross margin of a product. To use you simple enter the cost price of the product and then add your design gross margin. Once they have been completed you can either hit the enter or click the calculate button. It's as simple as that.
@@ -27,4 +29,4 @@ So I have learnt a lot during this project. In order to get the enter button to 
 
 Although I have been using Pycharm for the course I will be switching to VS Code going forward as I have more control over how the pip packages are installed. Maybe I am missing something but VSC just seems to work better for me.
 
-Next time I will look at adding screenshots and gif into the readme to make it more visually appealing.
+~~Next time I will look at adding screenshots and gif into the readme to make it more visually appealing.~~
