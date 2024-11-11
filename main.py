@@ -49,7 +49,7 @@ def calculate_gm():
             formatted_selling_price = f"£ {format(selling_price, '.2f')}"
 
             output_label.configure(
-                app, text=formatted_selling_price, text_color="green"
+                app, text=formatted_selling_price, text_color="green", font=("Arial", 22, "bold")
             )
 
             price_entry.delete(0, END)
